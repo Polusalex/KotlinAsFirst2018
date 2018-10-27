@@ -66,7 +66,14 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun digitNumber(n: Int): Int = TODO()
+fun digitNumber(n: Int): Int {
+    var b = 0
+    while (n >= 0) {
+        n / 10
+        b++
+    }
+    return b
+}
 
 /**
  * Простая
@@ -74,7 +81,16 @@ fun digitNumber(n: Int): Int = TODO()
  * Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
-fun fib(n: Int): Int = TODO()
+fun fib(n: Int): Int {
+    var a = 0
+    var b = 1
+    for (i in 1..n) {
+        val c = a + b
+        a = b
+        b = c
+    }
+    return a
+}
 
 /**
  * Простая
@@ -82,21 +98,39 @@ fun fib(n: Int): Int = TODO()
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int = TODO()
-
+fun lcm(m: Int, n: Int): Int {
+    var mx = m
+    var nx = n
+    var a = mx * nx
+    while (mx != nx) {
+        if (mx > nx) {
+            mx -= nx
+        } else {
+            nx -= mx
+        }
+    }
+    a /= mx
+    return a
+}
 /**
  * Простая
  *
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
-fun minDivisor(n: Int): Int = TODO()
+fun minDivisor(n: Int): Int {
+    for (a in 2..n) {
+        if (n % a == 0)
+            return a
+    }
+    return n
+}
 
 /**
  * Простая
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int = TODO()
+fun maxDivisor(n: Int): Int = n / minDivisor(n)
 
 /**
  * Простая
@@ -105,7 +139,19 @@ fun maxDivisor(n: Int): Int = TODO()
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = TODO()
+fun isCoPrime(m: Int, n: Int): Boolean {
+    var a = m
+    var b = n
+    while (a != b) {
+        if (a > b) a -= b
+        else b -= a
+    }
+    return when {
+        a == 1 -> true
+        else -> false
+    }
+}
+
 
 /**
  * Простая
