@@ -1,4 +1,5 @@
 @file:Suppress("UNUSED_PARAMETER")
+
 package lesson3.task1
 
 import lesson1.task1.numberRevert
@@ -41,7 +42,7 @@ fun isPrime(n: Int): Boolean {
  */
 fun isPerfect(n: Int): Boolean {
     var sum = 1
-    for (m in 2..n/2) {
+    for (m in 2..n / 2) {
         if (n % m > 0) continue
         sum += m
         if (sum > n) break
@@ -115,6 +116,7 @@ fun lcm(m: Int, n: Int): Int {
     a /= mx
     return a
 }
+
 /**
  * Простая
  *
@@ -170,6 +172,7 @@ fun squareBetweenExists(m: Int, n: Int): Boolean {
     }
     return (sqr(a) <= n)
 }
+
 /**
  * Средняя
  *
@@ -253,10 +256,11 @@ fun isPalindrome(n: Int): Boolean = revert(n) == n
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun hasDifferentDigits(n: Int): Boolean {
-    var x = n / 10
-    val y = n % 10
-    while (x > 0) {
-        if (x % 10 != y) return true
+    var x = n
+    val del = n % 10
+    while (x != 0) {
+        if (x % 10 != del)
+            return true
         x /= 10
     }
     return false
