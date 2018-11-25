@@ -151,10 +151,7 @@ fun isCoPrime(m: Int, n: Int): Boolean {
         if (a > b) a -= b
         else b -= a
     }
-    return when {
-        a == 1 -> true
-        else -> false
-    }
+    return a == 1
 }
 
 
