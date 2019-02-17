@@ -52,12 +52,10 @@ fun main(args: Array<String>) {
         val seconds = timeStrToSeconds(line)
         if (seconds == -1) {
             println("Введённая строка $line не соответствует формату ЧЧ:ММ:СС")
-        }
-        else {
+        } else {
             println("Прошло секунд с начала суток: $seconds")
         }
-    }
-    else {
+    } else {
         println("Достигнут <конец файла> в процессе чтения строки. Программа прервана")
     }
 }
@@ -78,14 +76,13 @@ fun dateStrToDigit(str: String): String {
     val months = listOf("января", "февраля", "марта", "апреля", "мая", "июня",
             "июля", "августа", "сентября", "октября", "ноября", "декабря")
     val parts = str.split(" ")
+    if (parts.size != 3) return ""
     val day = parts[0].toIntOrNull()
     val month = months.indexOf(parts[1]) + 1
     val year = parts[2].toIntOrNull()
-    if (parts.size != 3) return ""
     if (day == null || year == null || month !in 1..12 || day !in 1..daysInMonth(month, year)) return ""
     return String.format("%02d.%02d.%d", day, month, year)
 }
-
 
 
 /**
